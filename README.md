@@ -1,25 +1,25 @@
-# Müşteri Segmentasyonu (KMeans)
+# Customer Segmentation (KMeans)
 
-Müşterileri gelir ve harcama davranışına göre segmentlere ayırmak için KMeans kümeleme algoritmasını kullanan bir model.
+Segments customers by income and spending behavior using KMeans clustering.
 
-- Veri seti: Sentetik (numpy ile üretildi)
-- Algoritma: KMeans Clustering
+- Dataset: synthetic, generated with numpy (300 samples)
+- Algorithm: KMeans
 
-## Nasıl Çalışır
+## How it works
 
-- `age`, `annual_income_k` ve `spending_score` içeren 300 örneklik sentetik bir veri seti oluşturulur.
-- `annual_income_k` ve `spending_score` özellikleri `StandardScaler` ile ölçeklenir.
-- k=2..8 aralığında her küme sayısı için silhouette skoru hesaplanır ve en iyi k seçilir.
-- Seçilen k ile KMeans modeli eğitilir, küme boyutları ve merkezleri yazdırılır.
-- Örnek bir müşteri (gelir=80k, harcama skoru=75) için tahmini küme gösterilir.
+1. Generates a synthetic dataset with `age`, `annual_income_k`, and `spending_score`.
+2. Scales `annual_income_k` and `spending_score` with `StandardScaler`.
+3. Tries k=2..8, scores each with silhouette score, and picks the best k.
+4. Fits KMeans with that k and prints cluster sizes and centers.
+5. Predicts the cluster for a sample customer (income=80k, spending_score=75).
 
-## Kurulum
+## Setup
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Çalıştırma
+## Run
 
 ```bash
 python customer_segmentation.py
