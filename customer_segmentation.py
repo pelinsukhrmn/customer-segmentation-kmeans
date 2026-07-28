@@ -4,6 +4,8 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 
+K_RANGE = range(2, 9)
+
 
 def main():
     np.random.seed(42)
@@ -30,10 +32,10 @@ def main():
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    print("\nEvaluating cluster counts (k=2..8) with silhouette score...")
+    print(f"\nEvaluating cluster counts (k={K_RANGE.start}..{K_RANGE.stop - 1}) with silhouette score...")
     best_k = None
     best_score = -1
-    for k in range(2, 9):
+    for k in K_RANGE:
         model = KMeans(n_clusters=k, random_state=42, n_init=10)
         labels = model.fit_predict(X_scaled)
         score = silhouette_score(X_scaled, labels)
